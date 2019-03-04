@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Lab_1_ISRPO {
     class Lab_1 {
         static void Main(string[] args) {
-
+            Console.WriteLine("Hello");
         }
     }
 }
