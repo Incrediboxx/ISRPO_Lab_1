@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab_1_ISRPO
-{
 {  
     class Worker
     {
@@ -35,11 +34,9 @@ namespace Lab_1_ISRPO
         }
         public void MostYoung(List<Worker> workers)
         {
-            Worker buff = new Worker("", "", 0, workers[0].getBirthday());
             Worker buff = workers[0];
             for (int i = 1; i < workers.Count(); i++) 
             {
-                if (workers[i].getBirthday() > buff.getBirthday)
                 if (TimeComparison.TimeCompare(workers[i].getBirthday(), buff.getBirthday()) == 1)
                     buff = workers[i];
             }
