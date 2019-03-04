@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab_1_ISRPO
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+namespace Lab_1_ISRPO {
+    class Lab_1 {
+        static void Main(string[] args) {
+
         }
     }
 }
