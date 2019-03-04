@@ -28,10 +28,12 @@ namespace Lab_1_ISRPO
             Console.WriteLine("Зарплатала:    " + salary);
             Console.WriteLine("День рождения: " + salary);
         }
+
         DateTime getBirthday()
         {
             return this.birthday;
         }
+
         public void MostYoung(List<Worker> workers)
         {
             Worker buff = workers[0];
