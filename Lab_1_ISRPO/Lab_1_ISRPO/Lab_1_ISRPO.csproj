@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Lab_1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimeComparison.cs" />
+    <Compile Include="DateComparer.cs" />
     <Compile Include="Worker.cs" />
   </ItemGroup>
   <ItemGroup>
