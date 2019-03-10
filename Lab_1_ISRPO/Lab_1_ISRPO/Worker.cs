@@ -5,27 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab_1_ISRPO {  
-    class Worker {
-        private String fullName ;   // ФИО
-        private String post;        // Должность
-        private int salary;         // Зарплата
-        private DateTime birthday;  // День рождения
+    struct Worker {
+        private String Name ;       // ФИО
+        private DateTime Birthday;  // День рождения
+        private String Post;        // Должность
+        private int Salary;         // Зарплата
+        
 
-        public Worker(String fullName, String post, int salary, DateTime birthday) {
-            this.fullName = fullName;
-            this.post = post;
-            this.salary = salary;
-            this.birthday = birthday;
+        public Worker(String Name, DateTime Birthday, String Post, int Salary) {
+            this.Name = Name;
+            this.Birthday = Birthday;
+            this.Post = Post;
+            this.Salary = Salary;
         }
 
         public DateTime getBirthday() {
-            return birthday;
+            return Birthday;
         }
 
         public override string ToString() {
-            return String.Format("ФИО:           {0} \nДолжность:     {1} \nЗарплата:      {2} \nДата рождения: {3:dd.MM.yyyy}\n", fullName, post, salary, birthday);
+            return String.Format(" ФИО:           {0}\n Дата рождения: {1:dd.MM.yyyy}\n Должность:     {2}\n Зарплата:      {3}\n", Name, Birthday, Post, Salary);
         }
-
-
     }
 }
