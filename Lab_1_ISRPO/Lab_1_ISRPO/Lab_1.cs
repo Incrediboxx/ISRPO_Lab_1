@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 
 
-/// <summary>
-/// Hello
-/// </summary>
+
 namespace Lab_1_ISRPO {
     class Lab_1 {
         static void Main(string[] args) {
