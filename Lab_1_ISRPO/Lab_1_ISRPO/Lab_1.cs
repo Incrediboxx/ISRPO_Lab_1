@@ -14,6 +14,7 @@ namespace Lab_1_ISRPO {
                 Console.WriteLine(" Добавить.........................1");
                 Console.WriteLine(" Отфильтрованный список...........2");
                 Console.WriteLine(" Исходный список..................3");
+                Console.WriteLine(" Настроить фильтр.................4");
                 Console.WriteLine(" Выход............................0");
                 int n = 0;
                 do {
@@ -28,7 +29,7 @@ namespace Lab_1_ISRPO {
                             break;
                     
                     case 2: // Вывод отфильтрованного списка
-                            Console.Clear();
+                            /*Console.Clear();
                             // Применяем фильтр для копии списка, чтобы не испортить исходную последовательность
                             List<Worker> Copy = new List<Worker>(Workers);
                             Copy.Sort(new Filter());
@@ -36,7 +37,7 @@ namespace Lab_1_ISRPO {
                             foreach (Worker i in Copy) {
                                 Console.WriteLine(i);
                             }
-                            Console.ReadLine();
+                            Console.ReadLine();*/
                             break;
                         
                     case 3: // Вывод исходного списка
@@ -47,6 +48,10 @@ namespace Lab_1_ISRPO {
                             }
                             Console.ReadLine();
                             break;
+                    case 4:
+                        Filter filter = new Filter();
+                        filter.CreateFilter();
+                        break;
 
                     case 0: // Выход из программы
                         return;
@@ -108,6 +113,126 @@ namespace Lab_1_ISRPO {
             }
         }
 
+        struct Filter
+        {
+            private String Name;
+
+            private String Post;
+
+            private int MaxSalary;
+            private int MinSalary;
+
+            private DateTime MaxDate;
+            private DateTime MinDate;
+
+            public void CreateFilter()
+            {
+                while (true)
+                {
+                    Console.Clear();
+                    Console.WriteLine(" ---------Настройки фильтра---------");
+                    Console.WriteLine(" Имя...............................1");
+                    Console.WriteLine(" День рождения.....................2");
+                    Console.WriteLine(" Должность.........................3");
+                    Console.WriteLine(" Зарплата..........................4");
+                    Console.WriteLine(" Отмена............................0");
+                    int n = 0;
+                    do
+                    {
+                        Console.Write(" > ");
+                    } while (!Int32.TryParse(Console.ReadLine(), out n));
+                    switch (n)
+                    {
+                        case 1:
+                            Console.Clear();
+                            Console.Write(" ФИО: ");
+                            this.Name = Console.ReadLine();
+                            break;
+
+                        case 2:
+                            Console.Clear();
+                            Console.WriteLine(" Максимальная дата...........1");
+                            Console.WriteLine(" Минимальная дата............2");
+                            Console.WriteLine(" Назад.......................0");
+                            int dateSwitch = 0;
+                            do
+                            {
+                                Console.Write(" > ");
+                            } while (!Int32.TryParse(Console.ReadLine(), out dateSwitch));
+                            switch (dateSwitch)
+                            {
+                                case 1:
+                                    do
+                                    {
+                                        Console.Clear();
+                                        Console.Write(" Максимальная дата рождения (дд.ММ.гггг): ");
+                                    } while (!DateTime.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", null, DateTimeStyles.None, out this.MaxDate));
+                                    break;
+
+                                case 2:
+                                    do
+                                    {
+                                        Console.Clear();
+                                        Console.Write(" Минимальная дата рождения (дд.ММ.гггг): ");
+                                    } while (!DateTime.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", null, DateTimeStyles.None, out this.MinDate));
+                                    break;
+
+                                case 0:
+                                    break;
+                            }
+                            break;
+
+                        case 3:
+                            Console.Clear();
+                            Console.Write(" Должность: ");
+                            this.Post = Console.ReadLine();
+                            break;
+
+
+                        case 4:
+                            Console.Clear();
+                            Console.WriteLine(" Максимальная зарплата...........1");
+                            Console.WriteLine(" Минимальная зарплата............2");
+                            Console.WriteLine(" Назад...........................0");
+                            int salarySwitch = 0;
+                            do
+                            {
+                                Console.Write(" > ");
+                            } while (!Int32.TryParse(Console.ReadLine(), out salarySwitch));
+                            switch (salarySwitch)
+                            {
+                                case 1:
+                                    do
+                                    {
+                                        Console.Clear();
+                                        Console.Write("Максимальная зарплата: ");
+                                    } while (!Int32.TryParse(Console.ReadLine(), out this.MaxSalary));
+                                    break;
+
+                                case 2:
+                                    do
+                                    {
+                                        Console.Clear();
+                                        Console.Write("Минимальная заплата зарплата: ");
+                                    } while (!Int32.TryParse(Console.ReadLine(), out this.MinSalary));
+                                    break;
+
+                                case 0:
+                                    break;
+                            }
+                            break;
+
+                        case 0:
+                            return;
+
+                        default:
+                            return;
+                    }
+                }
+            }
+        }
+
+        /*
         class Filter : IComparer<Worker> {
             // Перегруженный метод Compare для сравнения элементов, сравнение осуществляется по полю Birthday
             public int Compare(Worker a, Worker b) {
@@ -118,6 +243,6 @@ namespace Lab_1_ISRPO {
                 else
                     return 0;
             }
-        }
+        }*/
     }
 }
