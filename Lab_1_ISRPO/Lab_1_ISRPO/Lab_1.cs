@@ -1,81 +1,127 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab_1_ISRPO {
     class Lab_1 {
         static void Main(string[] args) {
-            // Список элементов структуры
+            /// <summary>
+            /// Список элементов структуры
+            /// Заполняем значениями по умолчанию
+            /// </summary>
+            /// <param name="Workers"></param>
             List<Worker> Workers = new List<Worker>();
-            // Добавляем значения по умолчанию
             Workers.Add(new Worker("Иванов Иван Иванович", new DateTime(1990, 01, 12), "Директор", 25000));
             Workers.Add(new Worker("Петров Петр Петрович", new DateTime(1990, 02, 12), "Менеджер", 25000));
             Workers.Add(new Worker("Сидоров Михаил Михайлович", new DateTime(1990, 01, 10), "Рабочий", 25000));
-
+            /// <summary>
+            /// Основной цикл меню
+            /// </summary>
             while (true) {
                 Console.WriteLine(" ---------------МЕНЮ---------------");
                 Console.WriteLine(" Добавить.........................1");
-                Console.WriteLine(" Фильтр...........................2");
-                Console.WriteLine(" Весь список......................3");
+                Console.WriteLine(" Отфильтрованный список...........2");
+                Console.WriteLine(" Исходный список..................3");
                 Console.WriteLine(" Выход............................0");
                 int n = 0;
                 do {
                     Console.Write(" > ");
                 } while (!Int32.TryParse(Console.ReadLine(), out n));
                 switch (n) {
-                    // Добавление элемента в список
+                    /// <summary>
+                    /// Добавление элемента в список
+                    /// </summary>
                     case 1: {
-                            // Очищаем консоль
+                            /// <summary>
+                            /// Очищаем консоль 
+                            /// </summary>
                             Console.Clear();
-                            // Вводим ФИО
+                            /// <summary>
+                            /// Вводим ФИО
+                            /// </summary>
+                            /// <param name="Name"></param>
                             Console.Write(" ФИО: ");
                             String Name = Console.ReadLine();
-                            // Вводим дату рождения
+                            /// <summary>
+                            /// Вводим дату рождения
+                            /// Проверка вводимых данных на их корректность
+                            /// </summary>
+                            /// <param name="Birthday"></param>
                             DateTime Birthday;
                             do {
                                 Console.Write(" Дата рождения (дд.ММ.гггг): ");
                             } while (!DateTime.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", null, DateTimeStyles.None, out Birthday));
-                            // Вводим должность
+                            /// <summary>
+                            /// Вводим должность
+                            /// </summary>
+                            /// <param name="Post"></param>
                             Console.Write(" Должность: ");
                             String Post = Console.ReadLine();
-                            // Вводим зарплату
+                            /// <summary>
+                            /// Вводим зарплату
+                            /// Проверка вводимых данных на их корректность
+                            /// </summary>
+                            /// <param name="Salary"></param> 
                             int Salary = 0;
                             do {
                                 Console.Write(" Зарплата: ");
                             } while (!Int32.TryParse(Console.ReadLine(), out Salary));
-
+                            /// <summary>
+                            /// Добавляем новый элемент в список
+                            /// </summary>
                             Workers.Add(new Worker(Name, Birthday, Post, Salary));
                         } break;
-                    // Отфильтрованный список
+                    /// <summary>
+                    /// Вывод отфильтрованного списка
+                    /// </summary>
                     case 2: {
-                            // Очищаем консоль
+                            /// <summary>
+                            /// Очищаем консоль 
+                            /// </summary>
                             Console.Clear();
-                            Workers.Sort(new DateComparer());
-                            foreach (Worker i in Workers) {
+                            /// <summary>
+                            /// Применяем фильтр для копии списка
+                            /// Чтобы не испортить входную последовательность
+                            /// </summary>
+                            List<Worker> Copy = new List<Worker>(Workers);
+                            Copy.Sort(new DateComparer());
+                            /// <summary>
+                            /// Вывод списка с помощью перегруженного метода ToString()
+                            /// </summary>
+                            foreach (Worker i in Copy) {
                                 Console.WriteLine(i);
-                                break;
                             }
                             Console.ReadLine();
                         } break;
-                    // Вывод всего списка
+                    /// <summary>
+                    /// Вывод исходного списка
+                    /// </summary>
                     case 3: {
-                            // Очищаем консоль
+                            /// <summary>
+                            /// Очищаем консоль 
+                            /// </summary>
                             Console.Clear();
+                            /// <summary>
+                            /// Вывод списка с помощью перегруженного метода ToString()
+                            /// </summary>
                             foreach (Worker i in Workers) {
                                 Console.WriteLine(i);
                             }
                             Console.ReadLine();
                         }
                         break;
-                    // Выход из программы
+                    /// <summary>
+                    /// Выход из программы
+                    /// </summary>
                     case 0: return;
-                    // Значение по умолчания, для незарезервированных вариантов
+                    /// <summary>
+                    /// Значение по умолчания, для незарезервированных вариантов
+                    /// </summary>
                     default: break;
                 }
-                // Очищаем консоль
+                /// <summary>
+                /// Очищаем консоль 
+                /// </summary>
                 Console.Clear();
             }
         }
