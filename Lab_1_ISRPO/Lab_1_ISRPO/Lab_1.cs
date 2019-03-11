@@ -85,6 +85,7 @@ namespace Lab_1_ISRPO {
                             /// </summary>
                             List<Worker> Copy = new List<Worker>(Workers);
                             Copy.Sort(new DateComparer());
+                            Copy.Sort(new Filter());
                             /// <summary>
                             /// Вывод списка с помощью перегруженного метода ToString()
                             /// </summary>
