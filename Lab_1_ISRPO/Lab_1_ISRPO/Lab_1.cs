@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> ba210ff01a6f703115a07df53f945672211ed3e0
 namespace Lab_1_ISRPO {
     class Lab_1 {
         static void Main(string[] args) {
