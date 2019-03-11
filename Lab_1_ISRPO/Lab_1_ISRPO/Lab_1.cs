@@ -81,7 +81,7 @@ namespace Lab_1_ISRPO {
                             Console.Clear();
                             /// <summary>
                             /// Применяем фильтр для копии списка
-                            /// Чтобы не испортить входную последовательность
+                            /// Чтобы не испортить исходную последовательность
                             /// </summary>
                             List<Worker> Copy = new List<Worker>(Workers);
                             Copy.Sort(new Filter());
@@ -178,14 +178,14 @@ namespace Lab_1_ISRPO {
                 return Salary;
             }
 
-        /// <summary>
-        /// Перегруженный метод ToString() для данной структуры
-        /// </summary>
-        /// <returns>Данные в строковом формате</returns>
-        public override string ToString() {
-            return String.Format(" ФИО:           {0}\n Дата рождения: {1:dd.MM.yyyy}\n Должность:     {2}\n Зарплата:      {3}\n", Name, Birthday, Post, Salary);
+            /// <summary>
+            /// Перегруженный метод ToString() для данной структуры
+            /// </summary>
+            /// <returns>Данные в строковом формате</returns>
+            public override string ToString() {
+                return String.Format(" ФИО:           {0}\n Дата рождения: {1:dd.MM.yyyy}\n Должность:     {2}\n Зарплата:      {3}\n", Name, Birthday, Post, Salary);
+            }
         }
-    }
 
         class Filter : IComparer<Worker> {
             /// <summary>
