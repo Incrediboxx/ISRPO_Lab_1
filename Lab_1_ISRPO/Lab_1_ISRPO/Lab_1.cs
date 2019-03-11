@@ -81,7 +81,7 @@ namespace Lab_1_ISRPO {
                             Console.Clear();
                             /// <summary>
                             /// Применяем фильтр для копии списка
-                            /// Чтобы не испортить входную последовательность
+                            /// Чтобы не испортить исходную последовательность
                             /// </summary>
                             List<Worker> Copy = new List<Worker>(Workers);
                             Copy.Sort(new DateComparer());
