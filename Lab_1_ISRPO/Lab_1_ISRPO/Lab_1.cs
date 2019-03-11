@@ -84,7 +84,7 @@ namespace Lab_1_ISRPO {
                             /// Чтобы не испортить исходную последовательность
                             /// </summary>
                             List<Worker> Copy = new List<Worker>(Workers);
-                            Copy.Sort(new DateComparer());
+                            Copy.Sort(new Filter());
                             /// <summary>
                             /// Вывод списка с помощью перегруженного метода ToString()
                             /// </summary>
@@ -123,6 +123,85 @@ namespace Lab_1_ISRPO {
                 /// Очищаем консоль 
                 /// </summary>
                 Console.Clear();
+            }
+        }
+
+        struct Worker {
+            private String Name ;       // ФИО
+            private DateTime Birthday;  // День рождения
+            private String Post;        // Должность
+            private int Salary;         // Зарплата
+        
+            /// <summary>
+            /// Конструктор с параметрами
+            /// </summary>
+            /// <param name="Name"></param>
+            /// <param name="Birthday"></param>
+            /// <param name="Post"></param>
+            /// <param name="Salary"></param>
+            public Worker(String Name, DateTime Birthday, String Post, int Salary) {
+                this.Name = Name;
+                this.Birthday = Birthday;
+                this.Post = Post;
+                this.Salary = Salary;
+            }
+
+            /// <summary>
+            /// Получаем ФИО рабочего (для сравнения)
+            /// </summary>
+            /// <returns> ФИО </returns>
+            public String getName() {
+                return Name;
+            }
+
+            /// <summary>
+            /// Получаем дату рождения рабочего (для сравнения)
+            /// </summary>
+            /// <returns> Дата рождения </returns>
+            public DateTime getBirthday() {
+                return Birthday;
+            }
+
+            /// <summary>
+            /// Получаем должность рабочего (для сравнения)
+            /// </summary>
+            /// <returns> Должность </returns>
+            public String getPost() {
+                return Post;
+            }
+
+            /// <summary>
+            /// Получаем зарплату рабочего
+            /// </summary>
+            /// <returns> Зарплата </returns>
+            public int getSalary() {
+                return Salary;
+            }
+
+            /// <summary>
+            /// Перегруженный метод ToString() для данной структуры
+            /// </summary>
+            /// <returns>Данные в строковом формате</returns>
+            public override string ToString() {
+                return String.Format(" ФИО:           {0}\n Дата рождения: {1:dd.MM.yyyy}\n Должность:     {2}\n Зарплата:      {3}\n", Name, Birthday, Post, Salary);
+            }
+        }
+
+        class Filter : IComparer<Worker> {
+            /// <summary>
+            /// Перегруженный метод Compare для сравнения элементов
+            /// Сравнение осуществляется по полю Birthday
+            /// </summary>
+            /// <param name="a"></param>
+            /// <param name="b"></param>
+            /// <returns> Результат сравнения </returns>
+            public int Compare(Worker a, Worker b) {
+                if (a.getBirthday() > b.getBirthday())
+                    return 1;
+                else if (a.getBirthday() < b.getBirthday())
+                    return -1;
+                else
+                    return 0;
             }
         }
     }
