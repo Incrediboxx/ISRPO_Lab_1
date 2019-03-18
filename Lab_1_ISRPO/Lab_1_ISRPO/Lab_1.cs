@@ -11,13 +11,12 @@ namespace Lab_1_ISRPO {
             Filter filter = new Filter();
             
             while (true) {
-                // Вывод главного меню
-                Console.WriteLine(" ---------------МЕНЮ---------------");
-                Console.WriteLine(" Добавить работника...............1");
-                Console.WriteLine(" Отфильтрованный список...........2");
-                Console.WriteLine(" Полный список....................3");
-                Console.WriteLine(" Установить фильтр................4");
-                Console.WriteLine(" Выход............................0");
+                // Вывод главного меню                
+                Console.WriteLine(" 1.Добавить работника");
+                Console.WriteLine(" 2.Отфильтрованный список");
+                Console.WriteLine(" 3.Полный список");
+                Console.WriteLine(" 4.Установить фильтр");
+                Console.WriteLine(" 0.Выход");
                 
                 // Выбор действия
                 int n = 0;
