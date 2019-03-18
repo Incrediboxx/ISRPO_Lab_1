@@ -24,7 +24,8 @@ namespace Lab_1_ISRPO {
                     Console.Write(" > ");
                 } while (!Int32.TryParse(Console.ReadLine(), out n));
 
-                switch (n) { // Выполение выбранного действия
+                // Выполнение выбранного действия
+                switch (n) { 
 
                     case 1: // Добавление элемента в список
                             Console.Clear();
@@ -40,7 +41,7 @@ namespace Lab_1_ISRPO {
                             Console.ReadLine();
                             break;
                         
-                    case 3: // Вывод исходного списка
+                    case 3: // Вывод полного списка
                             Console.Clear();
                             foreach (Worker i in Workers) {
                                 Console.WriteLine(i);
@@ -54,64 +55,80 @@ namespace Lab_1_ISRPO {
                             break;
 
                     case 0: // Выход из программы
-                            return;
-
-                    default: break;
+                            return;                    
                 }
                 Console.Clear();
             }
         }
 
-        // Cтруктура Работник
+        // Работник
         struct Worker {
             public String Name ;       // ФИО
             public DateTime Birthday;  // День рождения
             public String Post;        // Должность
             public int Salary;         // Зарплата
 
-            // Метод для установки полей рабочего, возвращает объект структуры Worker
+            // Ввод нового работника
             public Worker Push() { 
                 // Вводим ФИО
                 Console.Write(" ФИО: ");
                 Name = Console.ReadLine();
-                // Вводим дату рождения, проверяем вводимые данные на их корректность
+
+                // Вводим дату рождения
                 do {
                     Console.Write(" Дата рождения (дд.ММ.гггг): ");
                 } while (!DateTime.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", null, DateTimeStyles.None, out Birthday));
+
                 // Вводим должность
                 Console.Write(" Должность: ");
                 Post = Console.ReadLine();
-                // Вводим зарплату, проверяем вводимые данные на их корректность
+
+                // Вводим зарплату
                 do {
                     Console.Write(" Зарплата: ");
                 } while (!Int32.TryParse(Console.ReadLine(), out Salary));
                 return this;
             }
 
-            // Проверка полей на соответствие фильтру, если не прошло возвращает NULL
+            // Проверка полей на соответствие фильтру
             public Worker? ApplyFilter(Filter filter) {
+                // Проверка по Имени
                 if (filter.NameSubstr != null && !Name.Contains(filter.NameSubstr))
                     return null;
+
+                // Проверка по Должности
                 if (filter.PostSubstr != null && !Post.Contains(filter.PostSubstr))
                     return null;
+
+                // Проверка по Минимальной зарплате
                 if (filter.SalaryLower != null && Salary < filter.SalaryLower)
                     return null;
+
+                // Проверка по Максимальной зарплате
                 if (filter.SalaryLower != null && Salary > filter.SalaryUpper)
                     return null;
+
+                // Проверка по Минимальной дате
                 if (filter.BirthdayLower != null && Birthday < filter.BirthdayLower)
                     return null;
+
+                // Проверка по Максимальной дате
                 if (filter.BirthdayUpper != null && Birthday > filter.BirthdayUpper)
                     return null;
+                
                 return this;
             }
 
-            // Перегруженный метод ToString() для данной структуры
+            // Вывод работника
             public override string ToString() {
-                return String.Format(" ФИО:           {0}\n Дата рождения: {1:dd.MM.yyyy}\n Должность:     {2}\n Зарплата:      {3}\n", Name, Birthday, Post, Salary);
+                return String.Format("ФИО:           {0}\n " +
+                                     "Дата рождения: {1:dd.MM.yyyy}\n " +
+                                     "Должность:     {2}\n " +
+                                     "Зарплата:      {3}\n", Name, Birthday, Post, Salary);
             }
         }
 
-        // Структура Фильтр
+        //  Фильтр
         struct Filter {
             public string NameSubstr;       // Значение фильтра ФИО
             public string PostSubstr;       // Значение фильтра Должность
@@ -120,23 +137,28 @@ namespace Lab_1_ISRPO {
             public DateTime? BirthdayLower; // Мин значение фильтра День рождения
             public DateTime? BirthdayUpper; // Макс значение фильтра День рождения
 
-            // Функция установки значений фильтра с консоли
+            //  Установка значений фильтра 
             public void FiilFromConsole() {
                 Console.Write("ФИО: ");
                 NameSubstr = EnterString();
+
                 Console.Write("Должность: ");
                 PostSubstr = EnterString();
+
                 Console.Write("Минимальная зарплата: ");
                 SalaryLower = EnterInt("Неверный формат");
+
                 Console.Write("Максимальная зарплата: ");
                 SalaryUpper = EnterInt("Неверный формат");
+
                 Console.Write("Минимальная дата: ");
                 BirthdayLower = EnterDateTime("Неверный формат");
+
                 Console.Write("Максимальная дата: ");
                 BirthdayUpper = EnterDateTime("Неверный формат");
             }
 
-            // Функция которая при чтении пустой строки вернет null
+            //  Ввод строки
             public static string EnterString() {
                 string value = Console.ReadLine();
                 if (value != string.Empty)
@@ -144,7 +166,7 @@ namespace Lab_1_ISRPO {
                 return null;
             }
 
-            // Функция для ввода опционального числа
+            // Ввод опционального числа
             public static int? EnterInt(string reEnterText) {
                 while (true) {
                     try {
@@ -160,7 +182,7 @@ namespace Lab_1_ISRPO {
                 }
             }
 
-            // Функция для ввода опциональной даты
+            // Ввод опциональной даты
             public static DateTime? EnterDateTime(string reEnterText) {
                 while (true) {
                     try {
