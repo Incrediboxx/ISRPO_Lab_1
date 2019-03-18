@@ -118,21 +118,21 @@ namespace Lab_1_ISRPO {
                 return Salary;
             }
 
+
+
             // Перегруженный метод ToString() для данной структуры
             public override string ToString() {
                 return String.Format(" ФИО:           {0}\n Дата рождения: {1:dd.MM.yyyy}\n Должность:     {2}\n Зарплата:      {3}\n", Name, Birthday, Post, Salary);
             }
         }
 
+        // Структура Фильтр
         struct Filter
         {
             private string NameSubstr;  // Значение фильтра ФИО
-
             private string PostSubstr;  // Значение фильтра Должность
-
             private int? SalaryLower;   // Нижнее значение фильтра Зарплата
             private int? SalaryUpper;   // Верхнее значение фильтра Зарплата
-
             private DateTime? BirthdayLower; // Нижнее значение фильтра День рождения
             private DateTime? BirthdayUpper; // Верхнее значение фильтра День рождения
 
