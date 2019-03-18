@@ -65,6 +65,7 @@ namespace Lab_1_ISRPO {
             }
         }
 
+        // Cтруктура Работник
         struct Worker {
             private String Name ;       // ФИО
             private DateTime Birthday;  // День рождения
@@ -118,14 +119,14 @@ namespace Lab_1_ISRPO {
         // Структура Фильтр
         struct Filter
         {
-            private string NameSubstr;  // Значение фильтра ФИО
-            private string PostSubstr;  // Значение фильтра Должность
-            private int? SalaryLower;   // Нижнее значение фильтра Зарплата
-            private int? SalaryUpper;   // Верхнее значение фильтра Зарплата
-            private DateTime? BirthdayLower; // Нижнее значение фильтра День рождения
-            private DateTime? BirthdayUpper; // Верхнее значение фильтра День рождения
+            private string NameSubstr;       // Значение фильтра ФИО
+            private string PostSubstr;       // Значение фильтра Должность
+            private int? SalaryLower;        // Мин значение фильтра Зарплата
+            private int? SalaryUpper;        // Макс значение фильтра Зарплата
+            private DateTime? BirthdayLower; // Мин значение фильтра День рождения
+            private DateTime? BirthdayUpper; // Макс значение фильтра День рождения
 
-            // Сравнение с фильтром, true - подходит, false - не подходит
+            // Сравнение с фильтром, возвращает true, если все поля подходят
             public bool UseFilter(Worker worker)
             {
                 if (NameSubstr != null && !worker.getName().Contains(NameSubstr))
