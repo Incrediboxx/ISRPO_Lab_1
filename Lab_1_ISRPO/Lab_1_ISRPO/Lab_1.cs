@@ -5,7 +5,8 @@ using System.Linq;
 
 namespace Lab_1_ISRPO {
     class Lab_1 {
-        static void Main(string[] args) {            
+        static void Main(string[] args) {
+            // Список элементов структуры
             List<Worker> Workers = new List<Worker>();
             Filter filter = new Filter();
             
