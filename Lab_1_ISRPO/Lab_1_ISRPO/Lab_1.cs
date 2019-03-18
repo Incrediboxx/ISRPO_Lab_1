@@ -169,17 +169,17 @@ namespace Lab_1_ISRPO {
             // Сравнение с фильтром, true - подходит, false - не подходит
             public bool UseFilter(Worker worker)
             {
-                if (NameSubstr != null & !worker.getName().Contains(NameSubstr))
+                if (NameSubstr != null && !worker.getName().Contains(NameSubstr))
                     return false;
-                if (PostSubstr != null & !worker.getPost().Contains(PostSubstr))
+                if (PostSubstr != null && !worker.getPost().Contains(PostSubstr))
                     return false;
-                if (SalaryLower != null & worker.getSalary() < SalaryLower)
+                if (SalaryLower != null && worker.getSalary() < SalaryLower)
                     return false;
-                if (SalaryLower != null & worker.getSalary() > SalaryUpper)
+                if (SalaryLower != null && worker.getSalary() > SalaryUpper)
                     return false;
-                if (BirthdayLower != null & worker.getBirthday() < BirthdayLower)
+                if (BirthdayLower != null && worker.getBirthday() < BirthdayLower)
                     return false;
-                if (BirthdayUpper != null & worker.getBirthday() > BirthdayUpper)
+                if (BirthdayUpper != null && worker.getBirthday() > BirthdayUpper)
                     return false;
                 return true;
             }
