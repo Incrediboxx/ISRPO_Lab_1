@@ -119,12 +119,15 @@ namespace Lab_1_ISRPO {
                 return Salary;
             }
 
+
+
             // Перегруженный метод ToString() для данной структуры
             public override string ToString() {
                 return String.Format(" ФИО:           {0}\n Дата рождения: {1:dd.MM.yyyy}\n Должность:     {2}\n Зарплата:      {3}\n", Name, Birthday, Post, Salary);
             }
         }
 
+<<<<<<< HEAD
         struct Filter {
             private string NameSubstr;          // Значение фильтра ФИО
             private string PostSubstr;          // Значение фильтра Должность
@@ -134,6 +137,20 @@ namespace Lab_1_ISRPO {
             private DateTime? BirthdayUpper;    // Верхнее значение фильтра День рождения
 
             public string SetName {
+=======
+        // Структура Фильтр
+        struct Filter
+        {
+            private string NameSubstr;  // Значение фильтра ФИО
+            private string PostSubstr;  // Значение фильтра Должность
+            private int? SalaryLower;   // Нижнее значение фильтра Зарплата
+            private int? SalaryUpper;   // Верхнее значение фильтра Зарплата
+            private DateTime? BirthdayLower; // Нижнее значение фильтра День рождения
+            private DateTime? BirthdayUpper; // Верхнее значение фильтра День рождения
+
+            public string SetName
+            {
+>>>>>>> bf03cc365fadb348c5ce4e9672af513e4cdad452
                 set { NameSubstr = value; }
             }
 
@@ -158,6 +175,7 @@ namespace Lab_1_ISRPO {
             }
 
             // Сравнение с фильтром, true - подходит, false - не подходит
+<<<<<<< HEAD
             public bool UseFilter(Worker worker) {
                 if ((NameSubstr != null) && (!worker.getName().Contains(NameSubstr)))
                     return false;
@@ -170,6 +188,21 @@ namespace Lab_1_ISRPO {
                 if ((BirthdayLower != null) && (worker.getBirthday() < BirthdayLower))
                     return false;
                 if ((BirthdayUpper != null) && (worker.getBirthday() > BirthdayUpper))
+=======
+            public bool UseFilter(Worker worker)
+            {
+                if (NameSubstr != null && !worker.getName().Contains(NameSubstr))
+                    return false;
+                if (PostSubstr != null && !worker.getPost().Contains(PostSubstr))
+                    return false;
+                if (SalaryLower != null && worker.getSalary() < SalaryLower)
+                    return false;
+                if (SalaryLower != null && worker.getSalary() > SalaryUpper)
+                    return false;
+                if (BirthdayLower != null && worker.getBirthday() < BirthdayLower)
+                    return false;
+                if (BirthdayUpper != null && worker.getBirthday() > BirthdayUpper)
+>>>>>>> bf03cc365fadb348c5ce4e9672af513e4cdad452
                     return false;
                 return true;
             }
