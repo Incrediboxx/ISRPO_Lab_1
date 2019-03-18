@@ -12,11 +12,11 @@ namespace Lab_1_ISRPO {
             
             while (true) {
                 // Вывод главного меню                
-                Console.WriteLine(" 1.Добавить работника");
-                Console.WriteLine(" 2.Отфильтрованный список");
-                Console.WriteLine(" 3.Полный список");
-                Console.WriteLine(" 4.Установить фильтр");
-                Console.WriteLine(" 0.Выход");
+                Console.WriteLine(" 1. Добавить работника");
+                Console.WriteLine(" 2. Отфильтрованный список");
+                Console.WriteLine(" 3. Полный список");
+                Console.WriteLine(" 4. Установить фильтр");
+                Console.WriteLine(" 0. Выход");
                 
                 // Выбор действия
                 int n = 0;
@@ -27,7 +27,7 @@ namespace Lab_1_ISRPO {
                 // Выполнение выбранного действия
                 switch (n) { 
 
-                    case 1: // Добавление элемента в список
+                    case 1: // Добавить работника
                             Console.Clear();
                             Worker Temp = new Worker();                 
                             Workers.Add(Temp.Push());
@@ -49,7 +49,7 @@ namespace Lab_1_ISRPO {
                             Console.ReadLine();
                             break;
 
-                    case 4: // Установка значений фильтра
+                    case 4: // Установка фильтра
                             Console.Clear();
                             filter.FiilFromConsole();
                             break;
@@ -101,19 +101,19 @@ namespace Lab_1_ISRPO {
                     return null;
 
                 // Проверка по Минимальной зарплате
-                if (filter.SalaryLower != null && Salary < filter.SalaryLower)
+                if (filter.SalaryMin != null && Salary < filter.SalaryMin)
                     return null;
 
                 // Проверка по Максимальной зарплате
-                if (filter.SalaryLower != null && Salary > filter.SalaryUpper)
+                if (filter.SalaryMin != null && Salary > filter.SalaryMax)
                     return null;
 
                 // Проверка по Минимальной дате
-                if (filter.BirthdayLower != null && Birthday < filter.BirthdayLower)
+                if (filter.BirthdayMin != null && Birthday < filter.BirthdayMin)
                     return null;
 
                 // Проверка по Максимальной дате
-                if (filter.BirthdayUpper != null && Birthday > filter.BirthdayUpper)
+                if (filter.BirthdayMax != null && Birthday > filter.BirthdayMax)
                     return null;
                 
                 return this;
@@ -121,41 +121,50 @@ namespace Lab_1_ISRPO {
 
             // Вывод работника
             public override string ToString() {
-                return String.Format("ФИО:           {0}\n " +
-                                     "Дата рождения: {1:dd.MM.yyyy}\n " +
-                                     "Должность:     {2}\n " +
-                                     "Зарплата:      {3}\n", Name, Birthday, Post, Salary);
+                return String.Format(
+                                        "ФИО:           {0}\n " +
+                                        "Дата рождения: {1:dd.MM.yyyy}\n " +
+                                        "Должность:     {2}\n " +
+                                        "Зарплата:      {3}\n", 
+                                         Name, Birthday, Post, Salary
+                                     );
             }
         }
 
         //  Фильтр
         struct Filter {
-            public string NameSubstr;       // Значение фильтра ФИО
-            public string PostSubstr;       // Значение фильтра Должность
-            public int? SalaryLower;        // Мин значение фильтра Зарплата
-            public int? SalaryUpper;        // Макс значение фильтра Зарплата
-            public DateTime? BirthdayLower; // Мин значение фильтра День рождения
-            public DateTime? BirthdayUpper; // Макс значение фильтра День рождения
+            public string NameSubstr;       // Фильтр для поля ФИО
+            public string PostSubstr;       // Фильтр для поля Должность
+            public int? SalaryMin;          // Мин Фильтр для поля Зарплата
+            public int? SalaryMax;          // Макс Фильтр для поля Зарплата
+            public DateTime? BirthdayMin;   // Мин Фильтр для поля День рождения
+            public DateTime? BirthdayMax;   // Макс Фильтр для поля День рождения
 
             //  Установка значений фильтра 
             public void FiilFromConsole() {
+                // ФИО
                 Console.Write("ФИО: ");
                 NameSubstr = EnterString();
 
+                // Должность
                 Console.Write("Должность: ");
                 PostSubstr = EnterString();
 
+                // Минимальная зарплата
                 Console.Write("Минимальная зарплата: ");
-                SalaryLower = EnterInt("Неверный формат");
+                SalaryMin = EnterInt("Неверный формат");
 
+                // Максимальная зарплата
                 Console.Write("Максимальная зарплата: ");
-                SalaryUpper = EnterInt("Неверный формат");
+                SalaryMax = EnterInt("Неверный формат");
 
+                // Минимальная дата
                 Console.Write("Минимальная дата: ");
-                BirthdayLower = EnterDateTime("Неверный формат");
+                BirthdayMin = EnterDateTime("Неверный формат");
 
+                // Максимальная дата
                 Console.Write("Максимальная дата: ");
-                BirthdayUpper = EnterDateTime("Неверный формат");
+                BirthdayMax = EnterDateTime("Неверный формат");
             }
 
             //  Ввод строки
@@ -166,9 +175,10 @@ namespace Lab_1_ISRPO {
                 return null;
             }
 
-            // Ввод опционального числа
+            // Ввод числового значения фильтра
             public static int? EnterInt(string reEnterText) {
                 while (true) {
+                    //...
                     try {
                         string value = Console.ReadLine();
                         if (value != string.Empty)
@@ -182,9 +192,10 @@ namespace Lab_1_ISRPO {
                 }
             }
 
-            // Ввод опциональной даты
+            // Ввод значения фильтра для даты
             public static DateTime? EnterDateTime(string reEnterText) {
                 while (true) {
+                    //...
                     try {
                         string value = Console.ReadLine();
                         if (value != string.Empty)
