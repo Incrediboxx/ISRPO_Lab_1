@@ -50,18 +50,7 @@ namespace Lab_1_ISRPO {
 
                     case 4: // Установка значений фильтра
                             Console.Clear();
-                            Console.Write("ФИО: ");
-                            filter.SetName = Filter.EnterString();
-                            Console.Write("Должность: ");
-                            filter.SetPost = Filter.EnterString();
-                            Console.Write("Минимальная зарплата: ");
-                            filter.SetSalaryLower = Filter.EnterInt("Неверный формат");
-                            Console.Write("Максимальная зарплата: ");
-                            filter.SetSalaryUpper = Filter.EnterInt("Неверный формат");
-                            Console.Write("Минимальная дата: ");
-                            filter.SetBirthdayLower = Filter.EnterDateTime("Неверный формат");
-                            Console.Write("Максимальная дата: ");
-                            filter.SetBirthdayUpper = Filter.EnterDateTime("Неверный формат");
+                            filter.FiilFromConsole();
                             break;
 
                     case 0: // Выход из программы
@@ -117,8 +106,6 @@ namespace Lab_1_ISRPO {
             public int getSalary() {
                 return Salary;
             }
-
-
 
             // Перегруженный метод ToString() для данной структуры
             public override string ToString() {
@@ -182,6 +169,23 @@ namespace Lab_1_ISRPO {
                 if (BirthdayUpper != null && worker.getBirthday() > BirthdayUpper)
                     return false;
                 return true;
+            }
+
+            // Функция установки значений фильтра с консоли
+            public void FiilFromConsole()
+            {
+                Console.Write("ФИО: ");
+                SetName = EnterString();
+                Console.Write("Должность: ");
+                SetPost = EnterString();
+                Console.Write("Минимальная зарплата: ");
+                SetSalaryLower = EnterInt("Неверный формат");
+                Console.Write("Максимальная зарплата: ");
+                SetSalaryUpper = EnterInt("Неверный формат");
+                Console.Write("Минимальная дата: ");
+                SetBirthdayLower = EnterDateTime("Неверный формат");
+                Console.Write("Максимальная дата: ");
+                SetBirthdayUpper = EnterDateTime("Неверный формат");
             }
 
             // Функция которая при чтении пустой строки вернет null
