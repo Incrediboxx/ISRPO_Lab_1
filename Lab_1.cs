@@ -10,8 +10,8 @@ namespace Lab_1_ISRPO {
             List<Worker> Workers = new List<Worker>();
             Filter filter = new Filter();
 
-            
-            while (true) {//Вывод главного меню
+            // Основной цикл меню
+            while (true) {
                 Console.WriteLine(" ---------------МЕНЮ---------------");
                 Console.WriteLine(" Добавить.........................1");
                 Console.WriteLine(" Отфильтрованный список...........2");
@@ -19,12 +19,10 @@ namespace Lab_1_ISRPO {
                 Console.WriteLine(" Установить фильтр................4");
                 Console.WriteLine(" Выход............................0");
                 int n = 0;
-                //Выбор действия
                 do {
                     Console.Write(" > ");
                 } while (!Int32.TryParse(Console.ReadLine(), out n));
-
-                switch (n) { //Выполение выбранного действия
+                switch (n) {
 
                     case 1: // Добавление элемента в список
                             Console.Clear();
@@ -52,7 +50,18 @@ namespace Lab_1_ISRPO {
 
                     case 4: // Установка значений фильтра
                             Console.Clear();
-                            filter.FiilFromConsole();
+                            Console.Write("ФИО: ");
+                            filter.SetName = Filter.EnterString();
+                            Console.Write("Должность: ");
+                            filter.SetPost = Filter.EnterString();
+                            Console.Write("Минимальная зарплата: ");
+                            filter.SetSalaryLower = Filter.EnterInt("Неверный формат");
+                            Console.Write("Максимальная зарплата: ");
+                            filter.SetSalaryUpper = Filter.EnterInt("Неверный формат");
+                            Console.Write("Минимальная дата: ");
+                            filter.SetBirthdayLower = Filter.EnterDateTime("Неверный формат");
+                            Console.Write("Максимальная дата: ");
+                            filter.SetBirthdayUpper = Filter.EnterDateTime("Неверный формат");
                             break;
 
                     case 0: // Выход из программы
@@ -108,6 +117,8 @@ namespace Lab_1_ISRPO {
             public int getSalary() {
                 return Salary;
             }
+
+
 
             // Перегруженный метод ToString() для данной структуры
             public override string ToString() {
@@ -171,23 +182,6 @@ namespace Lab_1_ISRPO {
                 if (BirthdayUpper != null && worker.getBirthday() > BirthdayUpper)
                     return false;
                 return true;
-            }
-
-            // Функция установки значений фильтра с консоли
-            public void FiilFromConsole()
-            {
-                Console.Write("ФИО: ");
-                SetName = EnterString();
-                Console.Write("Должность: ");
-                SetPost = EnterString();
-                Console.Write("Минимальная зарплата: ");
-                SetSalaryLower = EnterInt("Неверный формат");
-                Console.Write("Максимальная зарплата: ");
-                SetSalaryUpper = EnterInt("Неверный формат");
-                Console.Write("Минимальная дата: ");
-                SetBirthdayLower = EnterDateTime("Неверный формат");
-                Console.Write("Максимальная дата: ");
-                SetBirthdayUpper = EnterDateTime("Неверный формат");
             }
 
             // Функция которая при чтении пустой строки вернет null
