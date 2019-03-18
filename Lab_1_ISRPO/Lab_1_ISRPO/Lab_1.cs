@@ -10,8 +10,8 @@ namespace Lab_1_ISRPO {
             List<Worker> Workers = new List<Worker>();
             Filter filter = new Filter();
 
-            // Основной цикл меню
-            while (true) {
+            
+            while (true) {//Вывод главного меню
                 Console.WriteLine(" ---------------МЕНЮ---------------");
                 Console.WriteLine(" Добавить.........................1");
                 Console.WriteLine(" Отфильтрованный список...........2");
@@ -19,10 +19,12 @@ namespace Lab_1_ISRPO {
                 Console.WriteLine(" Установить фильтр................4");
                 Console.WriteLine(" Выход............................0");
                 int n = 0;
+                //Выбор действия
                 do {
                     Console.Write(" > ");
                 } while (!Int32.TryParse(Console.ReadLine(), out n));
-                switch (n) {
+
+                switch (n) { //Выполение выбранного действия
 
                     case 1: // Добавление элемента в список
                             Console.Clear();
