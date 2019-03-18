@@ -71,7 +71,8 @@ namespace Lab_1_ISRPO {
             public String Post;        // Должность
             public int Salary;         // Зарплата
 
-            public Worker Push() {
+            // Метод для установки полей рабочего, возвращает объект структуры Worker
+            public Worker Push() { 
                 // Вводим ФИО
                 Console.Write(" ФИО: ");
                 Name = Console.ReadLine();
@@ -89,6 +90,7 @@ namespace Lab_1_ISRPO {
                 return this;
             }
 
+            // Проверка полей на соответствие фильтру, если не прошло возвращает NULL
             public Worker? ApplyFilter(Filter filter) {
                 if (filter.NameSubstr != null && !Name.Contains(filter.NameSubstr))
                     return null;
