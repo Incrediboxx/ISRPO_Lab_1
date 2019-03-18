@@ -43,7 +43,6 @@ namespace Lab_1_ISRPO {
                         
                     case 3: // Вывод исходного списка
                             Console.Clear();
-                            // Вывод списка с помощью переопределённого метода ToString()
                             foreach (Worker i in Workers) {
                                 Console.WriteLine(i);
                             }
