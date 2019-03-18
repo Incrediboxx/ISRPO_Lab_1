@@ -125,36 +125,6 @@ namespace Lab_1_ISRPO {
             private DateTime? BirthdayLower; // Нижнее значение фильтра День рождения
             private DateTime? BirthdayUpper; // Верхнее значение фильтра День рождения
 
-            public string SetName
-            {
-                set { NameSubstr = value; }
-            }
-
-            public string SetPost
-            {
-                set { PostSubstr = value; }
-            }
-
-            public int? SetSalaryLower
-            {
-                set { SalaryLower = value; }
-            }
-
-            public int? SetSalaryUpper
-            {
-                set { SalaryUpper = value; }
-            }
-
-            public DateTime? SetBirthdayLower
-            {
-                set { BirthdayLower = value; }
-            }
-
-            public DateTime? SetBirthdayUpper
-            {
-                set { BirthdayUpper = value; }
-            }
-
             // Сравнение с фильтром, true - подходит, false - не подходит
             public bool UseFilter(Worker worker)
             {
@@ -177,17 +147,17 @@ namespace Lab_1_ISRPO {
             public void FiilFromConsole()
             {
                 Console.Write("ФИО: ");
-                SetName = EnterString();
+                NameSubstr = EnterString();
                 Console.Write("Должность: ");
-                SetPost = EnterString();
+                PostSubstr = EnterString();
                 Console.Write("Минимальная зарплата: ");
-                SetSalaryLower = EnterInt("Неверный формат");
+                SalaryLower = EnterInt("Неверный формат");
                 Console.Write("Максимальная зарплата: ");
-                SetSalaryUpper = EnterInt("Неверный формат");
+                SalaryUpper = EnterInt("Неверный формат");
                 Console.Write("Минимальная дата: ");
-                SetBirthdayLower = EnterDateTime("Неверный формат");
+                BirthdayLower = EnterDateTime("Неверный формат");
                 Console.Write("Максимальная дата: ");
-                SetBirthdayUpper = EnterDateTime("Неверный формат");
+                BirthdayUpper = EnterDateTime("Неверный формат");
             }
 
             // Функция которая при чтении пустой строки вернет null
