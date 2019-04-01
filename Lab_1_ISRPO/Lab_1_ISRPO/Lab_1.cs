@@ -86,7 +86,7 @@ namespace Lab_1_ISRPO {
 
             // Проверка полей на соответствие фильтру
             // Принимает фильтр
-            // Получаем работника (при соответствии полям фильтра)
+            // Возвращает работника (при соответствии полям фильтра)
             public Worker? ApplyFilter(Filter filter) {
                 // Проверка по Имени
                 if (filter.NameSubstr != null && !Name.Contains(filter.NameSubstr))
@@ -191,6 +191,7 @@ namespace Lab_1_ISRPO {
 
             // Ввод числового значения фильтра
             // Принимает вводимую строку
+            // Возвращает числовое значение либо его отсутствие
             public static int? EnterInt(string reEnterText) {
                 while (true) {
                     // Проверка его наличия 
@@ -209,6 +210,7 @@ namespace Lab_1_ISRPO {
 
             // Ввод значения фильтра для даты
             // Принимает вводимую строку
+            // Возвращает дату либо ее отсутствие
             public static DateTime? EnterDateTime(string reEnterText) {
                 while (true) {
                     // Проверка его наличия
