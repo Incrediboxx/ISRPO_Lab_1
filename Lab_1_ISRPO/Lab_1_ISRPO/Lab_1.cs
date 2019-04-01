@@ -9,7 +9,9 @@ namespace Lab_1_ISRPO {
             // Список элементов структуры
             List<Worker> Workers = new List<Worker>();
             Filter filter = new Filter();
-            
+            Worker Temp = new Worker();
+
+            // Меню
             while (true) {
                 // Вывод главного меню                
                 Console.WriteLine(" 1. Добавить работника");
@@ -25,33 +27,25 @@ namespace Lab_1_ISRPO {
                 } while (!Int32.TryParse(Console.ReadLine(), out n));
 
                 // Выполнение выбранного действия
-                switch (n) { 
-
+                switch (n) {                 
                     case 1: // Добавить работника
                             Console.Clear();
-                            Worker Temp = new Worker();                 
                             Workers.Add(Temp.Push());
                             break;
                     
                     case 2: // Вывод отфильтрованного списка
                             Console.Clear();
-                            foreach (Worker i in Workers) {
-                                Console.WriteLine(i.ApplyFilter(filter));
-                            }
-                            Console.ReadLine();
+                            Temp.PrintWithFilter(Workers, filter);
                             break;
                         
                     case 3: // Вывод полного списка
                             Console.Clear();
-                            foreach (Worker i in Workers) {
-                                Console.WriteLine(i);
-                            }
-                            Console.ReadLine();
+                            Temp.PrintAll(Workers);
                             break;
 
                     case 4: // Установка фильтра
                             Console.Clear();
-                            filter.FiilFromConsole();
+                            filter.FillFromConsole();
                             break;
 
                     case 0: // Выход из программы
@@ -91,6 +85,8 @@ namespace Lab_1_ISRPO {
             }
 
             // Проверка полей на соответствие фильтру
+            // Принимает фильтр
+            // Получаем работника (при соответствии полям фильтра)
             public Worker? ApplyFilter(Filter filter) {
                 // Проверка по Имени
                 if (filter.NameSubstr != null && !Name.Contains(filter.NameSubstr))
@@ -129,6 +125,24 @@ namespace Lab_1_ISRPO {
                                          Name, Birthday, Post, Salary
                                      );
             }
+
+            // Вывод отфильтрованного списка
+            // Принимает список работников и фильтр
+            public void PrintWithFilter(List<Worker> Workers, Filter filter) {
+                foreach (Worker i in Workers) {
+                    Console.WriteLine(i.ApplyFilter(filter));
+                }
+                Console.ReadLine();
+            }
+
+            // Вывод полного списка
+            // Принимает список работников
+            public void PrintAll(List<Worker> Workers) {
+                foreach (Worker i in Workers) {
+                    Console.WriteLine(i);
+                }
+                Console.ReadLine();
+            }
         }
 
         //  Фильтр
@@ -141,7 +155,7 @@ namespace Lab_1_ISRPO {
             public DateTime? BirthdayMax;   // Макс Фильтр для поля День рождения
 
             //  Установка значений фильтра 
-            public void FiilFromConsole() {
+            public void FillFromConsole() {
                 // ФИО
                 Console.Write("ФИО: ");
                 NameSubstr = EnterString();
@@ -176,9 +190,10 @@ namespace Lab_1_ISRPO {
             }
 
             // Ввод числового значения фильтра
+            // Принимает вводимую строку
             public static int? EnterInt(string reEnterText) {
                 while (true) {
-                    //...
+                    // Проверка его наличия 
                     try {
                         string value = Console.ReadLine();
                         if (value != string.Empty)
@@ -193,9 +208,10 @@ namespace Lab_1_ISRPO {
             }
 
             // Ввод значения фильтра для даты
+            // Принимает вводимую строку
             public static DateTime? EnterDateTime(string reEnterText) {
                 while (true) {
-                    //...
+                    // Проверка его наличия
                     try {
                         string value = Console.ReadLine();
                         if (value != string.Empty)
