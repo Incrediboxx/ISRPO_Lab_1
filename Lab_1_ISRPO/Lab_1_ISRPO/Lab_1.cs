@@ -89,8 +89,9 @@ namespace Lab_1_ISRPO {
             /*
                 Входные параметры:
                     filter - фильтр
-                Выходные параметры:
-                    this -  работник, при соответствии полям фильтра
+                Возвращаемые значения:
+                    ссылку на работника, при соответствии полям фильтра
+                    null, при несоответствии полям фильтра
             */            
                 // Проверка по Имени
                 if (filter.NameSubstr != null && !Name.Contains(filter.NameSubstr))
@@ -121,6 +122,10 @@ namespace Lab_1_ISRPO {
 
             // Вывод работника
             public override string ToString() {
+            /*
+                Возвращаемые значения:
+                    информация об одном работнике
+            */  
                 return String.Format(
                                         "ФИО:           {0}\n " +
                                         "Дата рождения: {1:dd.MM.yyyy}\n " +
@@ -133,7 +138,7 @@ namespace Lab_1_ISRPO {
             // Вывод отфильтрованного списка
             public void PrintWithFilter(List<Worker> Workers, Filter filter) {
             /*
-                Входные парамтры:
+                Входные параметры:
                     Workers - список работников
                     filter - фильтр
             */            
@@ -146,7 +151,7 @@ namespace Lab_1_ISRPO {
             // Вывод полного списка
             public void PrintAll(List<Worker> Workers) {
             /*
-                Входные парамтры:
+                Входные параметры:
                     Workers - список работников                    
             */                
                 foreach (Worker i in Workers) {
@@ -194,6 +199,11 @@ namespace Lab_1_ISRPO {
 
             //  Ввод строки
             public static string EnterString() {
+            /*
+                Возвращаемые значения:
+                    вводимая строка
+                    null, при отсутствии значения
+            */    
                 string value = Console.ReadLine();
                 if (value != string.Empty)
                     return value;
@@ -203,10 +213,11 @@ namespace Lab_1_ISRPO {
             // Ввод числового значения фильтра
             public static int? EnterInt(string reEnterText) {
             /*
-                Входные парамтры:
-                    reEnterText - вводимая строкуа
-                Выходные значения
+                Входные параметры:
+                    reEnterText - сообщение об ошибке
+                Возвращаемые значения:
                     Числовое значение
+                    null, при отсутствии значения
             */                
                 while (true) {
                     // Проверка его наличия 
@@ -226,10 +237,11 @@ namespace Lab_1_ISRPO {
             // Ввод значения фильтра для даты
             public static DateTime? EnterDateTime(string reEnterText) {
             /*
-                Входные парамтры:
-                    reEnterText - вводимая строкуа
-                Выходные значения
+                Входные параметры:
+                    reEnterText - сообщение об ошибке
+                Возвращаемые значения:
                     Дата
+                    null, при отсутствии значения
             */           
                 while (true) {
                     // Проверка его наличия
