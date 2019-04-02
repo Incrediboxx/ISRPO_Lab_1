@@ -94,8 +94,8 @@ namespace Lab_1_ISRPO {
                 Входные параметры:
                     filter - фильтр
                 Возвращаемые значения:
-                    ссылка на работника, при соответствии полям фильтра
-                    null, при несоответствии полям фильтра
+                    ссылка на работника - при соответствии полям фильтра
+                    null - во всех остальных случаях
             */            
                 // Проверка по Имени
                 if (filter.NameSubstr != null && !Name.Contains(filter.NameSubstr))
@@ -110,7 +110,7 @@ namespace Lab_1_ISRPO {
                     return null;
 
                 // Проверка по Максимальной зарплате
-                if (filter.SalaryMin != null && Salary > filter.SalaryMax)
+                if (filter.SalaryMax != null && Salary > filter.SalaryMax)
                     return null;
 
                 // Проверка по Минимальной дате
@@ -206,7 +206,7 @@ namespace Lab_1_ISRPO {
             /*
                 Возвращаемые значения:
                     вводимая строка
-                    null, при отсутствии значения
+                    null - при отсутствии значения
             */    
                 string value = Console.ReadLine();
                 if (value != string.Empty)
@@ -221,7 +221,7 @@ namespace Lab_1_ISRPO {
                     reEnterText - сообщение об ошибке
                 Возвращаемые значения:
                     Числовое значение
-                    null, при отсутствии значения
+                    null - при отсутствии значения
             */                
                 while (true) {
                     // Проверка его наличия 
@@ -245,7 +245,7 @@ namespace Lab_1_ISRPO {
                     reEnterText - сообщение об ошибке
                 Возвращаемые значения:
                     Дата
-                    null, при отсутствии значения
+                    null - при отсутствии значения
             */           
                 while (true) {
                     // Проверка его наличия
