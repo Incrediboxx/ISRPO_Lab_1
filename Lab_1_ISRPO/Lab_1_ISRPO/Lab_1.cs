@@ -86,8 +86,12 @@ namespace Lab_1_ISRPO {
 
             // Проверка полей на соответствие фильтру
             public Worker? ApplyFilter(Filter filter) {
-            // Принимает фильтр
-            // Возвращает работника (при соответствии полям фильтра)
+            /*
+                Входные параметры:
+                    filter - фильтр
+                Выходные параметры:
+                    this -  работник, при соответствии полям фильтра
+            */            
                 // Проверка по Имени
                 if (filter.NameSubstr != null && !Name.Contains(filter.NameSubstr))
                     return null;
@@ -128,7 +132,11 @@ namespace Lab_1_ISRPO {
 
             // Вывод отфильтрованного списка
             public void PrintWithFilter(List<Worker> Workers, Filter filter) {
-            // Принимает список работников и фильтр
+            /*
+                Входные парамтры:
+                    Workers - список работников
+                    filter - фильтр
+            */            
                 foreach (Worker i in Workers) {
                     Console.WriteLine(i.ApplyFilter(filter));
                 }
@@ -137,7 +145,10 @@ namespace Lab_1_ISRPO {
 
             // Вывод полного списка
             public void PrintAll(List<Worker> Workers) {
-            // Принимает список работников
+            /*
+                Входные парамтры:
+                    Workers - список работников                    
+            */                
                 foreach (Worker i in Workers) {
                     Console.WriteLine(i);
                 }
@@ -191,8 +202,12 @@ namespace Lab_1_ISRPO {
 
             // Ввод числового значения фильтра
             public static int? EnterInt(string reEnterText) {
-            // Принимает вводимую строку
-            // Возвращает числовое значение либо его отсутствие
+            /*
+                Входные парамтры:
+                    reEnterText - вводимая строкуа
+                Выходные значения
+                    Числовое значение
+            */                
                 while (true) {
                     // Проверка его наличия 
                     try {
@@ -210,8 +225,12 @@ namespace Lab_1_ISRPO {
 
             // Ввод значения фильтра для даты
             public static DateTime? EnterDateTime(string reEnterText) {
-            // Принимает вводимую строку
-            // Возвращает дату либо ее отсутствие
+            /*
+                Входные парамтры:
+                    reEnterText - вводимая строкуа
+                Выходные значения
+                    Дата
+            */           
                 while (true) {
                     // Проверка его наличия
                     try {
